@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">
+        <th:block th:text="${title}">Your Website Title</th:block>
+    </title>
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a th:href="@{/dresses/list}">Dress List</a>
+            <a th:href="@{/dresses/add}">Add Dress</a>
+        </nav>
+    </header>
+
+    <main>
+        <div layout:fragment="content"></div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Ahmed Shehta</p>
+            <nav>
+                <a href="/about">About</a> |
+                <a href="/contact">Contact</a> |
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

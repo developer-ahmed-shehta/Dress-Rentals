@@ -1,0 +1,91 @@
+header {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    justify-content: space-between; /* Space logo and nav */
+    align-items: center;
+    width:100%;
+}
+
+.header-logo { /* Style for your logo (replace with your logo) */
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+nav {
+    /* No background needed, links stand out on white */
+}
+
+nav a {
+    padding: 10px 15px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #007bff; /* Blue on hover */
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack logo and nav */
+        align-items: center;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        display: block; /* Stack links vertically */
+        margin: 5px 0;
+    }
+}
+
+footer {
+    background-color: #343a40; /* Dark gray background */
+    color: white;
+    padding: 20px;
+    text-align: center; /* Center the content */
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 960px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    display: flex;
+    justify-content: space-between; /* Distribute space between text and nav */
+    align-items: center; /* Vertically align content */
+}
+
+footer p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px; /* Add spacing between links */
+}
+
+/* Responsive adjustments (as needed) */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center content horizontally */
+    }
+
+    footer nav {
+        margin-top: 10px; /* Add spacing between text and nav */
+       
+    }
+}

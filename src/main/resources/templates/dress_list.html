@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <title layout:title="Dress List">Dress List</title>
+    <link rel="stylesheet" th:href="@{/css/dress_list.css}">
+</head>
+
+<body>
+    <div layout:fragment="content">
+                                 <!-- Message Display -->
+                                 <div th:if="${message}" th:text="${message}" 
+                                 th:class="${'alert ' + (message.contains('successfully') ? 'alert-success' : 'alert-danger')} 
+                                             + ' alert-show'">
+                                 <span class="alert-icon" 
+                                     th:text="${message.contains('successfully') ? '✔️' : '❌'}"></span>
+                                 <span th:text="${message}"></span>
+                             </div>
+
+        <div th:if="${dresses.isEmpty()}">
+            <p>No dresses found.</p>
+        </div>
+
+        <div th:unless="${dresses.isEmpty()}" class="dress-container">
+            <div th:each="dress : ${dresses}" class="dress-card">
+                <a th:href="@{/dresses/edit/{id}(id=${dress.id})}" class="edit-card-button">Edit</a> <img th:src="${dress.photoPath}" th:alt="${'Photo of ' + dress.name}" class="dress-image">
+                <div class="dress-overlay">
+                    <div class="dress-details">
+                        <h2 class="dress-name" th:text="${dress.name}"></h2>
+                        <p class="dress-description" th:text="${dress.description}"></p>
+                        <p class="dress-price">Price: <span th:text="${dress.pricePerDay}"></span> per day</p>
+                        <p class="dress-availability" th:class="${dress.availability} ? '' : 'unavailable'">
+                            Availability: <span th:text="${dress.availability} ? 'Yes' : 'No'"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${page.totalPages > 1}">
+            <ul class="pagination">
+                <li th:class="${page.number == 0} ? 'disabled'">
+                    <a th:href="@{/dresses/list(page=${page.number - 1})}" th:text="'Previous'"></a>
+                </li>
+                <li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}" th:class="${page.number == i} ? 'active'">
+                    <a th:href="@{/dresses/list(page=${i})}" th:text="${i + 1}"></a>
+                </li>
+                <li th:class="${page.number == page.totalPages - 1} ? 'disabled'">
+                    <a th:href="@{/dresses/list(page=${page.number + 1})}" th:text="'Next'"></a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            const dressCards = document.querySelectorAll('.dress-card');
+            dressCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                });
+            });
+            /*]]>*/
+            
+     // Wait until the DOM is fully loaded
+     document.addEventListener('DOMContentLoaded', function() {
+            // Check if there is an alert message
+            var alertElement = document.querySelector('.alert');
+    
+            if (alertElement) {
+                // Add class to show the alert with animation
+                alertElement.classList.add('alert-show');
+                
+                // After 5 seconds, hide the alert with animation
+                setTimeout(function() {
+                    alertElement.classList.remove('alert-show');
+                    alertElement.classList.add('alert-hide');
+                    
+                    // Optionally, remove the alert from the DOM after the fade out animation
+                    setTimeout(function() {
+                        alertElement.remove(); // This will completely remove the alert after animation
+                    }, 500); // Wait for the fadeOut animation to finish before removing it
+                }, 5000); // Alert will disappear after 5 seconds
+            }
+        });
+        </script>
+    </div>
+</body>
+</html>

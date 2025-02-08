@@ -1,0 +1,17 @@
+<!-- src/main/resources/templates/dresses.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Wedding Dresses</title>
+</head>
+<body>
+    <h1>Available Wedding Dresses</h1>
+    <ul>
+        <th:block th:each="dress : ${dresses}">
+            <li th:text="${dress.name}"></li>
+        </th:block>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,186 @@
+/* add_dress.css */
+
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 500px; /* Increased width */
+    max-width: 95%; /* Ensure it fits on smaller screens */
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: calc(100% - 12px); /* Adjusted width for padding and border */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+input[type="file"] {
+    width: calc(100% - 12px); /* Adjusted width for padding and border */
+    box-sizing: border-box;
+}
+
+textarea {
+    width: calc(100% - 12px); /* Match input width */
+    height: 100px; /* Increased height */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical; /* Allow user to adjust height */
+    font-family: inherit; /* Ensure consistent font */
+}
+
+
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.alert {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) { /* Adjusted breakpoint */
+    form {
+        width: 90%;
+    }
+}
+
+
+
+/* Additional Styling for Alert */
+/* Positioning the alert at the top-right corner */
+.alert {
+    padding: 15px 20px;
+    margin: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Ensure it stays on top */
+}
+
+
+
+
+
+/* Success and error alert styling */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+/* Adding Icons to Alerts */
+.alert-icon {
+    margin-right: 15px;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* Animations for Alert */
+.alert-show {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.alert-hide {
+    animation: fadeOut 0.5s ease-in;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
